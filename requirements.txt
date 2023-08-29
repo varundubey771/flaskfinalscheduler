@@ -1,1 +1,6 @@
 Flask==2.2.2
+bs4
+requests
+DateTime
+python-dotenv
+mysql-connector-python
