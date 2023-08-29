@@ -78,8 +78,8 @@ def getJobData():
 
 @app.route('/sendJobDataCron')
 def sendJobDataCron():
-   countries = ["Australia"]
-   jobs = ["Python", "Java"]
+   countries = ["Australia","India","United States","United Kingdom","Ireland","Germany"]
+   jobs = ["Python", "Java", "Data Science"]
    lst=[]
    print(countries)
    print(jobs)
