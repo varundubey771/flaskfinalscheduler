@@ -78,7 +78,7 @@ def getJobData():
 
 @app.route('/sendJobDataCron')
 def sendJobDataCron():
-   countries = ["Australia","India","United States","United Kingdom","Ireland","Germany"]
+   countries = ["United Kingdom","Ireland","Germany"]
    jobs = ["Python", "Java", "Data Science"]
    lst=[]
    print(countries)
@@ -93,3 +93,22 @@ def sendJobDataCron():
    print(lst)
    resp = (writer(lst))
    return lst
+ 
+
+@app.route('/sendJobDataCronPartition2')
+def sendJobDataCronPartition2():
+   countries = ["Australia","India","United States"]
+   jobs = ["Python", "Java", "Data Science"]
+   lst=[]
+   print(countries)
+   print(jobs)
+   current_datetime = datetime.datetime.now()
+   str_cur_dt= current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+   parsed_datetime = datetime.datetime.strptime(str_cur_dt, "%Y-%m-%d %H:%M:%S")
+   for country in countries:
+       for job in jobs:
+           job_count = int(scrape_jobs(country,job))
+           lst.append((country, job_count, job,parsed_datetime))
+   print(lst)
+   resp = (writer(lst))
+   return lst   
