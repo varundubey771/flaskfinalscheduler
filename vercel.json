@@ -1,9 +1,4 @@
-{"crons": [
-    {
-      "path": "/sendJobDataCron",
-      "schedule": "19 9 * * * *"
-    }
-  ],
+{
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index" }
   ]
