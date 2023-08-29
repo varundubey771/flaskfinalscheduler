@@ -1,6 +1,6 @@
 {"crons": [
     {
-      "path": "/api/index/sendJobDataCron",
+      "path": "/sendJobDataCron",
       "schedule": "19 9 * * * *"
     }
   ],
