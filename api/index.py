@@ -30,7 +30,6 @@ def writer(data):
         connection.commit()
         print(cursor.rowcount, "rows inserted.")
     except mysql.connector.Error as err:
-        print("Error:", err)
         connection.rollback()
     cursor.close()
     connection.close()
@@ -81,8 +80,6 @@ def sendJobDataCron():
    countries = ["United Kingdom","Ireland"]
    jobs = ["Python", "Java", "Data Science"]
    lst=[]
-   print(countries)
-   print(jobs)
    current_datetime = datetime.datetime.now()
    str_cur_dt= current_datetime.strftime("%Y-%m-%d %H:%M:%S")
    parsed_datetime = datetime.datetime.strptime(str_cur_dt, "%Y-%m-%d %H:%M:%S")
@@ -90,7 +87,6 @@ def sendJobDataCron():
        for job in jobs:
            job_count = int(scrape_jobs(country,job))
            lst.append((country, job_count, job,parsed_datetime))
-   print(lst)
    resp = (writer(lst))
    return lst
  
@@ -100,8 +96,6 @@ def sendJobDataCronPartition2():
    countries = ["Australia","India"]
    jobs = ["Python", "Java", "Data Science"]
    lst=[]
-   print(countries)
-   print(jobs)
    current_datetime = datetime.datetime.now()
    str_cur_dt= current_datetime.strftime("%Y-%m-%d %H:%M:%S")
    parsed_datetime = datetime.datetime.strptime(str_cur_dt, "%Y-%m-%d %H:%M:%S")
@@ -109,17 +103,14 @@ def sendJobDataCronPartition2():
        for job in jobs:
            job_count = int(scrape_jobs(country,job))
            lst.append((country, job_count, job,parsed_datetime))
-   print(lst)
    resp = (writer(lst))
    return lst   
 
 @app.route('/sendJobDataCronPartition3')
-def sendJobDataCronPartition2():
+def sendJobDataCronPartition3():
    countries = ["Germany","United States"]
    jobs = ["Python", "Java", "Data Science"]
    lst=[]
-   print(countries)
-   print(jobs)
    current_datetime = datetime.datetime.now()
    str_cur_dt= current_datetime.strftime("%Y-%m-%d %H:%M:%S")
    parsed_datetime = datetime.datetime.strptime(str_cur_dt, "%Y-%m-%d %H:%M:%S")
@@ -127,6 +118,5 @@ def sendJobDataCronPartition2():
        for job in jobs:
            job_count = int(scrape_jobs(country,job))
            lst.append((country, job_count, job,parsed_datetime))
-   print(lst)
    resp = (writer(lst))
    return lst       
